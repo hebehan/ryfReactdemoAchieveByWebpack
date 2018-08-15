@@ -35,9 +35,9 @@ class App extends Component {
         // routebean.push(
         //     <Route path='*' component={items[0].comp}/>
         // )
-        for (let i = 0; i < items.length; i++) {
+        for (var i = 0; i < items.length; i++) {
             itembean.push(
-                <li className={items[i].className}>
+                <li ke={i} className={items[i].className}>
                     <Link to={items[i].path}>{items[i].comp.name}</Link>
                 </li>
             )
@@ -56,7 +56,6 @@ class App extends Component {
 
             <Layout>
             <Sider >
-            <BrowserRouter >
                 <div >
 
                     <ul className="twoline">
@@ -65,28 +64,27 @@ class App extends Component {
                         {itembean}
                     </ul>
 
-                    <Switch >
-
+                    
+                </div>
+            </Sider>
+            <Layout>
+              <Content >
+                  <Switch >
                         {routebean}
-
                         {/* <Route exact path='/' component={Demo1}/>
                         <Route path='/demo1' component={Demo1}/>
                         <Route path='/demo2' component={Demo2}/>
                         <Route path='*' component={Demo1}/> */}
-
                     </Switch>
-                </div>
-            </BrowserRouter>
-            </Sider>
-            <Layout>
-              <Header>Header</Header>
-              <Content>Content</Content>
-              <Footer>Footer</Footer>
+                </Content>
             </Layout>
           </Layout>
         );
     }
 };
 
-render(
-    <App/>, document.querySelector('#app'))
+render((
+    <BrowserRouter>
+    <App/>
+    </BrowserRouter>
+), document.querySelector('#app'))

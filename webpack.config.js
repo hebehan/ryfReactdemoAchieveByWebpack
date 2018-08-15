@@ -14,9 +14,32 @@ module.exports = {
             {
                 test:/\.js[x]?$/,
                 exclude:/node_modules/,
-                use:{
-                    loader:'babel-loader',
-                }
+                loader:'babel-loader'
+            },
+            // {
+            //     test: /\.less$/,
+            //     loader: 'style-loader!css-loader!postcss-loader!less-loader?{modifyVars:{"@primary-color":"#ff00ff"}}',
+            //     options:{
+            //         javascriptEnabled:true
+            //     }
+            //   }
+            {
+                test: /\.less$/, 
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader"
+                    },
+                    {
+                        loader: "less-loader",
+                        options: {
+                            // "modifyVars":{ "@primary-color": "#1DA57A"},
+                            "javascriptEnabled":true
+                        }
+                    }
+                ]
             }
         ]
     },
